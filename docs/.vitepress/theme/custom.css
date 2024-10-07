@@ -15,10 +15,12 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: '石头体';
     src: url('/fonts/yezigongchangxiaoshitou.ttf') format('truetype');
 }
+
 @font-face {
     font-family: '流光体';
     src: url('/fonts/流光体.ttf') format('truetype');
@@ -34,7 +36,7 @@
     /* 使文字透明以显示背景渐变 */
     font-size: 4rem;
     /* 字体大小 */
-    font-family: '流光体';
+    font-family: '石头体';
 }
 
 .hero-text {
@@ -44,4 +46,17 @@
     font-weight: bold;
     /* 加粗字体 */
     font-family: 'sans-serif';
+}
+
+/* 添加渐变阴影 */
+@media (min-width: 640px) {
+    :root {
+        --vp-home-hero-image-filter: blur(56px);
+    }
+}
+
+@media (min-width: 960px) {
+    :root {
+        --vp-home-hero-image-filter: blur(68px);
+    }
 }
