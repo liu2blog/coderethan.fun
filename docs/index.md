@@ -1,0 +1,37 @@
+---
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  name: "<span class='hero-name'>码医森</span>"  # 这里添加了 span 标签
+  text: "<span class='hero-text'>Ethan的知识博客</span>"
+  tagline: 涵盖各类计算机技术；个人其他能力和认知提升；多学科探索自我
+  actions:
+    - theme: brand
+      text: 前往主页✅
+      link: /
+    - theme: alt
+      text: 使用指南
+      link: /giude/api-examples
+    - theme: alt
+      text: 关于站点
+      link: /guide/api-examples
+
+features:
+  - icon:
+      src: /icons/learn.svg
+    title: IT学习
+    details: 涵盖各类计算机知识体系。408知识点、Java后端、Py数据分析、人工智能、云原生、Linux等
+    link: '/IT-leaning'
+  - icon: 
+      src: /icons/improve.svg
+    title: 自我提升
+    details: 除了IT，还有一些更nice的模块。比如冥想锻炼、各行各业的分析等
+    link: '/improve'
+  - icon: 
+      src: /icons/explore.svg
+    title: 探索未知
+    details: 对三观的不断探索，认识自我。包含心理学、神经科学、哲学、量子力学等的学习和探索
+    link: '/explore'
+---
+

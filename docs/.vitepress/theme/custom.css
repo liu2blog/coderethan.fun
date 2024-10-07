@@ -1,0 +1,47 @@
+/* .vitepress/theme/custom.css */
+
+/*全局可用*/
+:root {
+    --color1: #48A5FF;
+    --color2: #b02bdd;
+    --color3: #c903fb;
+
+}
+
+/*字体引入*/
+@font-face {
+    font-family: '仿宋_GB2312';
+    src: url('/fonts/仿宋_GB2312.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: '石头体';
+    src: url('/fonts/yezigongchangxiaoshitou.ttf') format('truetype');
+}
+@font-face {
+    font-family: '流光体';
+    src: url('/fonts/流光体.ttf') format('truetype');
+}
+
+/*标题name, text效果*/
+.hero-name {
+    background: linear-gradient(90deg, var(--color1), var(--color2));
+    /* 渐变从浅蓝到亮紫 */
+    -webkit-background-clip: text;
+    /* 将渐变应用于文字 */
+    -webkit-text-fill-color: transparent;
+    /* 使文字透明以显示背景渐变 */
+    font-size: 4rem;
+    /* 字体大小 */
+    font-family: '流光体';
+}
+
+.hero-text {
+    color: var(--color3);
+    font-size: 4rem;
+    /* 字体大小 */
+    font-weight: bold;
+    /* 加粗字体 */
+    font-family: 'sans-serif';
+}
