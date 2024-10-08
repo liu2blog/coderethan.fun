@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import AutoSidebar from "vite-plugin-vitepress-auto-sidebar";
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,6 +12,35 @@ export default defineConfig({
   lang: 'zh-CN',
   appearance: "dark",
   srcExclude: ['/README.md'],
+
+  // 自动侧边栏配置
+  vite: {
+    plugins: [
+      // add plugin
+      AutoSidebar({
+        ignoreList: ["README.md"], // 忽略文件夹
+        path: "/docs/", // 侧边栏扫描路径(也就是所有笔记所在的目录)
+        ignoreIndexItem: true, // 忽略首页
+        collapsed: false, // 是否启用折叠，默认为false展开
+        deletePrefix: "docs", // 删除路径前缀
+        sideBarResolved(data) {
+          // 接收完整的侧边栏对象以进行自定义修改
+          return data;
+        },
+        sideBarItemsResolved(data) {
+          // 接收完整的侧边栏 subItem 对象以进行自定义修改
+          return data;
+        },
+        beforeCreateSideBarItems(data) {
+          // 获取生成侧边栏子项之前扫描的文件名列表。如果要对侧边栏数据进行排序，建议使用
+          return data;
+        },
+        titleFromFile: false, // 从文件中提取标题
+        // You can also set options to adjust sidebar data
+        // see option document below
+      }),
+    ],
+  },
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -43,142 +74,157 @@ export default defineConfig({
       { text: '博客指南', link: '/guide/' },
 
       {
-        text: 'Java/Py 开发',  // 合并Java和Linux为一个大类
+        text: '编程技术',  // 合并J为一个大类
         items: [
           {
-            text: 'Java后端',  // 第一个小模块
+            text: 'Java后端',  // 小模块
             items: [
-              { text: 'JavaSE', link: '/Java/java-se' },
-              { text: 'JavaWeb', link: '/Java/java-web' },
-              { text: 'SSM', link: '/Java/ssm' },
+              { text: 'JavaSE', link: '/IT-learning/Java/java-se' },
+              { text: 'JavaWeb', link: '/IT-learning/Java/java-web' },
+              { text: 'SSM', link: '/IT-learning/Java/ssm' },
             ]
           },
           {
-            text: 'Python数据分析',  // 第一个小模块
+            text: 'Py&数据分析',  // 小模块
             items: [
-              { text: '算法', link: '/Python/' },
-              { text: '科学库', link: '/Python/' },
-              { text: '工具', link: '/Python/' },
+              { text: '算法', link: '/IT-learning/Py和数据分析/算法/' },
+              { text: '数据分析', link: '/IT-learning/Py和数据分析/数据分析/' },
+              { text: '工具', link: '/IT-learning/Py和数据分析/工具/' },
+            ]
+          },
+          {
+            text: 'Linux技术',  // 小模块
+            items: [
+              { text: 'Docker技术', link: '/IT-learning/Linux/Docker/' },
+              { text: 'Shell脚本', link: '/IT-learning//Linux/Shell/' },
+            ]
+          },
+          {
+            text: '计算机知识',
+            items: [
+              { text: '数据结构', link: '/IT-learning/408知识/数据结构/' },
+              { text: '计算机网络', link: '/IT-learning/408知识/计算机网络/' },
+              { text: '计算机组成原理', link: '/IT-learning/408知识/计算机组成原理/' },
+              { text: '操作系统', link: '/IT-learning/408知识/操作系统/' },
+              { text: '计算机碎片知识', link: '/IT-learning/408知识/碎片知识/' },
             ]
           },
         ]
       },
+
+
       {
-        text: 'Linux技术',  // 第二个小模块
+        text: '自我提升',
         items: [
-          { text: 'Linux基础', link: '/linux/linux-basics' },
-          { text: 'Shell脚本', link: '/linux/shell-scripts' },
-          { text: '网络配置', link: '/linux/network-setup' },
-        ]
-      },
-      {
-        text: '计算机知识',
-        items: [
-          { text: '数据结构', link: '/computer/data-structures' },
-          { text: '计算机网络', link: '/computer/computer-networks' },
-          { text: '计算机组成原理', link: '/computer/computer-architecture' },
-        ]
-      },
-      {
-        text: '个人提升',
-        items: [
-          { text: '冥想练习', link: '/improve/meditation' },
-          { text: '学科交叉', link: '/improve/interdisciplinary' },
-          { text: '金融投资', link: '/improve/investment' },
+          { text: '冥想练习', link: '/improve/冥想练习/' },
+          { text: '学科交叉', link: '/improve/学科交叉/' },
+          { text: '金融投资', link: '/improve/金融投资/' },
         ]
       },
       {
         text: '求职面试',
-        link: '/interview/interview-tips'
+        items: [
+          { text: 'Java面经', link: '/面试求职/Java面经/' },
+          { text: '场景算法', link: '/面试求职/场景算法/' },
+          { text: '经验分享', link: '/面试求职/经验分享/' },
+        ],
       },
       {
-        text: '进度跟进',
+        text: '其他维护',
         items: [
-          { text: '站点更新', link: '/update/update-log' },
+          { text: '站点更新', link: '/update/更新日志' },
+          { text: '问题清单', link: '/技术问题清单/' },
           { text: '个人日常', link: 'https://EthanLiu6.github.io' },
         ]
-      }
+      },
     ], // end导航栏
 
-    // 导航栏跳转后的侧边栏
-    sidebar: {
-      '/guide/': [
-        {
-          text: '博客指南',
-          collapsed: true,
-          items: [
-            { text: '博客md语法', link: '/guide/markdown-examples' },
-            { text: 'API案例', link: '/guide/api-examples' },
-            { text: 'API案例-cp', link: '/guide/api-examples copy' }
-          ]
-        }
-      ],
-      '/Java/': [
-        {
-          text: 'Java后端',
-          collapsed: true,
-          items: [
-            { text: 'JavaSE', link: '/Java/java-se' },
-            { text: 'JavaWeb', link: '/Java/java-web' },
-            { text: 'SSM', link: '/Java/ssm' },
-          ]
-        }
-      ],
-      '/linux/': [
-        {
-          text: 'Linux技术',
-          collapsed: true,
-          items: [
-            { text: 'Linux基础', link: '/linux/linux-basics' },
-            { text: 'Shell脚本', link: '/linux/shell-scripts' },
-            { text: '网络配置', link: '/linux/network-setup' },
-          ]
-        }
-      ],
-      '/computer/': [
-        {
-          text: '计算机知识',
-          collapsed: true,
-          items: [
-            { text: '数据结构', link: '/computer/data-structures' },
-            { text: '计算机网络', link: '/computer/computer-networks' },
-            { text: '计算机组成原理', link: '/computer/computer-architecture' },
-          ]
-        }
-      ],
-      '/improve/': [
-        {
-          text: '个人提升',
-          collapsed: true,
-          items: [
-            { text: '冥想练习', link: '/improve/meditation' },
-            { text: '学科交叉', link: '/improve/interdisciplinary' },
-            { text: '金融投资', link: '/improve/investment' },
-          ]
-        }
-      ],
-      '/interview/': [
-        {
-          text: '求职面试',
-          collapsed: true,
-          items: [
-            { text: '面试技巧', link: '/interview/interview-tips' },
-            { text: '常见问题', link: '/interview/common-questions' },
-          ]
-        }
-      ],
-      '/update/': [
-        {
-          text: '站点更新',
-          collapsed: true,
-          items: [
-            { text: "更新日志", link: '/update/update-log' },
-            { text: "2024-10[建站]", link: '/update/2024-10[建站]' },
-            { text: "2024-11", link: '/update/2024-11' },
+    /**
+        // 导航栏跳转后的侧边栏
+        sidebar: {
+          '/guide/': [
+            {
+              text: '博客指南',
+              collapsed: true,
+              items: [
+                { text: '博客md语法', link: '/guide/markdown-examples' },
+                { text: 'API案例', link: '/guide/api-examples' },
+                { text: 'API案例-cp', link: '/guide/api-examples copy' }
+              ]
+            }
           ],
-        }
-      ]
-    }, // end侧边栏
+          '/Java/': [
+            {
+              text: 'Java后端',
+              collapsed: true,
+              items: [
+                { text: 'JavaSE', link: '/Java/java-se' },
+                { text: 'JavaWeb', link: '/Java/java-web' },
+                { text: 'SSM', link: '/Java/ssm' },
+              ]
+            }
+          ],
+          '/linux/': [
+            {
+              text: 'Linux技术',
+              collapsed: true,
+              items: [
+                { text: 'Linux基础', link: '/linux/linux-basics' },
+                { text: 'Shell脚本', link: '/linux/shell-scripts' },
+                { text: '网络配置', link: '/linux/network-setup' },
+              ]
+            }
+          ],
+          '/computer/': [
+            {
+              text: '计算机知识',
+              collapsed: true,
+              items: [
+                { text: '数据结构', link: '/computer/data-structures' },
+                { text: '计算机网络', link: '/computer/computer-networks' },
+                { text: '计算机组成原理', link: '/computer/computer-architecture' },
+              ]
+            }
+          ],
+          '/improve/': [
+            {
+              text: '个人提升',
+              collapsed: true,
+              items: [
+                { text: '冥想练习', link: '/improve/meditation' },
+                { text: '学科交叉', link: '/improve/interdisciplinary' },
+                { text: '金融投资', link: '/improve/investment' },
+              ]
+            }
+          ],
+          '/interview/': [
+            {
+              text: '求职面试',
+              collapsed: true,
+              items: [
+                { text: '面试技巧', link: '/interview/interview-tips' },
+                { text: '常见问题', link: '/interview/common-questions' },
+              ]
+            }
+          ],
+          '/update/': [
+            {
+              text: '站点更新',
+              collapsed: true,
+              items: [
+                { text: "更新日志", link: '/update/更新日志' },
+                { text: "2024-10[建站]", link: '/update/2024-10[建站]' },
+                { text: "2024-11", link: '/update/2024-11' },
+              ],
+            }
+          ]
+        }, // end侧边栏
+     * 
+     */
+
+    sidebar: {
+
+    },
 
     // 页脚配置
     footer: {

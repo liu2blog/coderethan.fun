@@ -1,5 +1,6 @@
-# 站点指南
+# 整体该博客(站点)指南
 ::: tip 包含内容
 博客结构、如何使用该站点……
 :::
-# [Markdown Examples](/guide/markdown-examples)
+## [博客结构](/guide/博客结构)
+## [博客使用指南](/guide/博客使用指南)

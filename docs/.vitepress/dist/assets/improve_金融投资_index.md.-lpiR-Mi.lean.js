@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.C9NVOr0y.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"improve/金融投资/index.md","filePath":"improve/金融投资/index.md","lastUpdated":null}'),r={name:"improve/金融投资/index.md"};function n(o,i,s,d,c,p){return a(),t("div")}const l=e(r,[["render",n]]);export{_ as __pageData,l as default};

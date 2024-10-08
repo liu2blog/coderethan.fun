@@ -11,31 +11,31 @@ hero:
   
   actions:
     - theme: brand
-      text: 前往主页
-      link: /
-    - theme: alt
-      text: 使用指南
+      text: 站点使用指南
       link: /guide/
     - theme: alt
-      text: 关于站点
-      link: /guide/api-examples
+      text: 日常博客
+      link: https://EthanLiu6.github.io
+    - theme: alt
+      text: 联系站长
+      link: mailto:16693226842@163.com
 
 features:
   - icon:
       src: /icons/learn.svg
     title: IT学习
     details: 涵盖各类计算机知识体系。408知识点、Java后端、Py数据分析、人工智能、云原生、Linux等
-    link: '/IT-leaning'
+    link: '/IT-learning/'
   - icon: 
       src: /icons/improve.svg
     title: 自我提升
     details: 除了IT，还有一些更nice的模块。比如冥想锻炼、各行各业的分析等
-    link: '/improve'
+    link: '/improve/'
   - icon: 
       src: /icons/explore.svg
     title: 探索未知
-    details: 对三观的不断探索，认识自我。包含心理学、神经科学、哲学、量子力学等的学习和探索
-    link: '/explore'
+    details: 对三观的不断探索，包含心理学、神经科学、哲学、量子力学等的学习和探索；对当下热点的分析。
+    link: '/explore/'
 ---
 
 <style>
