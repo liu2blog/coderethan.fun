@@ -10,7 +10,7 @@ export default defineConfig({
   lang: 'zh-CN',
   appearance: "dark",
   srcExclude: ['/README.md'],
-  
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     siteTitle: 'CoderEthan学习站', // 左上角的站点名称
@@ -91,10 +91,11 @@ export default defineConfig({
         text: '求职面试',
         link: '/interview/interview-tips'
       },
-      { text: '进度跟进',
+      {
+        text: '进度跟进',
         items: [
-          { text: '站点更新', link: '/update/update-log'},
-          { text: '个人日常', link: 'https://EthanLiu6.github.io'},
+          { text: '站点更新', link: '/update/update-log' },
+          { text: '个人日常', link: 'https://EthanLiu6.github.io' },
         ]
       }
     ], // end导航栏
@@ -168,9 +169,15 @@ export default defineConfig({
       ],
       '/update/': [
         {
-          text: '站点更新', collapsed: true, link: '/update/update-log'
+          text: '站点更新',
+          collapsed: true,
+          items: [
+            { text: "更新日志", link: '/update/update-log' },
+            { text: "2024-10[建站]", link: '/update/2024-10[建站]' },
+            { text: "2024-11", link: '/update/2024-11' },
+          ],
         }
-      ],
+      ]
     }, // end侧边栏
 
     // 页脚配置
