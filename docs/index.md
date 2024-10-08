@@ -8,6 +8,7 @@ hero:
   tagline: 涵盖各类计算机技术；个人其他能力和认知提升；多学科探索自我
   image:
     src: /imgs/home-page-logo.svg
+  
   actions:
     - theme: brand
       text: 前往主页
